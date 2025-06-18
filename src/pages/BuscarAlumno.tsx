@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from '../componentes/Navbar';
 
 interface Student {
   id: number;
@@ -39,11 +40,7 @@ const BuscarAlumno = () => {
   return (
     <div className="h-screen w-screen bg-primary flex flex-col">
       {/* Header */}
-      <header className="relative p-4 flex items-center justify-center gap-10">
-        <h2 className="text-white text-lg font-semibold">Inicio</h2>
-        <h2 className="text-white text-lg font-semibold">Grupos</h2>
-        <h2 className="text-white text-lg font-semibold">Alumnos</h2>
-      </header>
+      <Navbar/>
 
       <div className="text-center mt-20">
         <h2 className="text-white text-4xl font-bold">Hola, busca al alumno de tu interés</h2>

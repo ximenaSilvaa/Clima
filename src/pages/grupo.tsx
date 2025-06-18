@@ -1,8 +1,8 @@
-import Header from '../componentes/Header';
 import StudentCard from '../componentes/Student';
 import { useLocation } from 'react-router-dom'
 import { StudentInformation } from '../types/types';
 // import { students } from '../types/data';
+import Navbar from '../componentes/Navbar';
 
 function Grupo() {
     const location = useLocation();
@@ -11,7 +11,7 @@ function Grupo() {
     return (
         <div className="h-auto w-auto bg-primary flex flex-col">
             {/* header */}
-            <Header />
+            <Navbar/>
 
             <div className='text-center mt-20 mb-20'>
                 <h2 className="text-white text-4xl font-semibold">Te encuentras en el grupo A </h2>

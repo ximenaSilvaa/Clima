@@ -1,14 +1,14 @@
 import GroupCard from '../componentes/GroupCard';
-import Header from '../componentes/Header';
 import { groups } from '../types/data';
-
+import Navbar from '../componentes/Navbar';
 
 function Grupos() {
-    
+
     return (
         <div className="h-auto w-auto bg-primary flex flex-col">
             {/* header */}
-            <Header />
+            <Navbar/>
+            
 
             <div className='text-center mt-20 mb-20'>
                 <h2 className="text-white text-4xl font-bold">Grupos </h2>

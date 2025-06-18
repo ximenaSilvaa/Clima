@@ -7,6 +7,7 @@ import {
   PlusCircleIcon,
   PencilSquareIcon,
 } from '@heroicons/react/24/solid';
+import Navbar from '../componentes/Navbar';
 
 function Alumno() {
   const location = useLocation();
@@ -20,12 +21,11 @@ function Alumno() {
 
   if(student){
       return (
-      <div className="min-h-screen bg-[#135078] text-white font-sans w-full overflow-x-hidden relative">
-
-        {/* Barra de navegación - más alta */}
-        <div className="w-full h-20 bg-gray-200" />
-
-        <div className="max-w-screen-xl mx-auto w-full px-6 sm:px-20 py-12">
+        <div className="min-h-screen bg-[#135078] text-white font-sans w-full overflow-x-hidden relative">
+          {/* Barra de navegación - más alta */}
+          <Navbar />
+          
+          <div className="max-w-screen-xl mx-auto w-full px-6 sm:px-20 py-12">
 
           {/* Título */}
           <h1 className="text-center text-4xl font-serif mt-10 mb-20">
