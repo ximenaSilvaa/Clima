@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import { useNavigate, } from 'react-router-dom'
 import GroupCard from '../componentes/GroupCard';
 import Header from '../componentes/Header';
-function Grupos() {
-    const navigate = useNavigate()
+import { groups } from '../types/data';
 
+
+function Grupos() {
+    
     return (
         <div className="h-auto w-auto bg-primary flex flex-col">
             {/* header */}
@@ -16,12 +16,13 @@ function Grupos() {
 
             {/* contenido centrado */}
             <div className="flex flex-col items-center justify-start min-h-screen w-full py-10 px-20">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-20 px-4 w-full">
-                    <GroupCard />
-                    <GroupCard />
-                    <GroupCard />
-                    <GroupCard />
-                    <GroupCard />
+                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 px-4 w-full">
+                    {
+                    groups.map((group) => (
+                        <GroupCard group={group} />
+                    ))
+                    }
+
                 </div>
             </div>
 

@@ -1,11 +1,12 @@
-import { useState } from 'react'
-import { useNavigate, } from 'react-router-dom'
-import GroupCard from '../componentes/GroupCard';
 import Header from '../componentes/Header';
 import StudentCard from '../componentes/Student';
+import { useLocation } from 'react-router-dom'
+import { StudentInformation } from '../types/types';
+// import { students } from '../types/data';
 
 function Grupo() {
-    const navigate = useNavigate()
+    const location = useLocation();
+    const { students } = location.state || {};
 
     return (
         <div className="h-auto w-auto bg-primary flex flex-col">
@@ -19,11 +20,11 @@ function Grupo() {
             {/* contenido centrado */}
             <div className="flex flex-col items-center justify-start min-h-screen w-full py-10 px-20">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-20 px-4 w-full">
-                    <StudentCard />
-                    <StudentCard />
-                    <StudentCard />
-                    <StudentCard />
-                    <StudentCard />
+                    {
+                    students.map((student: StudentInformation) => (
+                        <StudentCard student={student}/>
+                    ))
+                    }
                 </div>
             </div>
 
