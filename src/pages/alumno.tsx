@@ -1,16 +1,17 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
   FolderIcon,
   UserCircleIcon,
   PlusCircleIcon,
   PencilSquareIcon,
+  XMarkIcon,
+  DocumentIcon,
 } from '@heroicons/react/24/solid';
 
 function Alumno() {
   const [activeFolder, setActiveFolder] = useState<string | null>(null);
   const [editMode, setEditMode] = useState(false);
-  const [addMode, setAddMode] = useState(false);
+  const [addMode, setAddMode] = useState(true);
   const [archivosPorCarpeta, setArchivosPorCarpeta] = useState<{ [key: string]: File[] }>({});
   const [matricula, setMatricula] = useState("AO178666");
   const [condicion, setCondicion] = useState("Regular");
@@ -28,6 +29,20 @@ function Alumno() {
         [activeFolder]: [...(prev[activeFolder] || []), ...Array.from(archivos)],
       }));
     }
+  };
+
+  const handleEliminarArchivo = (carpeta: string, index: number) => {
+    setArchivosPorCarpeta((prev) => ({
+      ...prev,
+      [carpeta]: prev[carpeta].filter((_, i) => i !== index)
+    }));
+  };
+
+  const handleAbrirArchivo = (file: File) => {
+    const url = URL.createObjectURL(file);
+    window.open(url, '_blank');
+    // Limpiamos el URL después de un tiempo para liberar memoria
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
 
   return (
@@ -120,13 +135,7 @@ function Alumno() {
         {/* Agregar */}
          <div className="flex flex-col lg:flex-row items-stretch w-full gap-14 mt-10 min-h-[300px]">
             <div className="flex flex-col items-center gap-6 w-full lg:w-[240px]">
-            <div
-              className="flex flex-col items-center text-xs cursor-pointer mt-7 ml-14 transition-transform hover:scale-110"
-              onClick={() => setAddMode(!addMode)}
-            >
-              <PlusCircleIcon className="w-8 h-8 text-[#00b2ff] mb-1 transition-transform hover:scale-125" />
-              {addMode ? "Cerrar subida" : "Agregar"}
-            </div>
+            {/* Espacio reservado para mantener el diseño */}
           </div>
             
         {/* Carpetas */}
@@ -153,8 +162,8 @@ function Alumno() {
     <div className="bg-white text-black p-8 rounded-2xl shadow-2xl w-[40rem] text-center max-h-[90vh] overflow-y-auto">
       <h2 className="text-2xl font-bold mb-6">{activeFolder}</h2>
 
-      {addMode && (
-        <label className="inline-block mb-6">
+      {/* Botón para seleccionar documentos siempre visible */}
+      <label className="inline-block mb-6">
         <span className="bg-[#00b2ff] text-white px-4 py-2 rounded shadow transition-transform hover:bg-[#008ecc] hover:scale-105 cursor-pointer inline-block">
           Seleccionar documento
           <input
@@ -165,14 +174,29 @@ function Alumno() {
           />
         </span>
       </label>
-      
-      )}
 
       {archivosPorCarpeta[activeFolder]?.length > 0 ? (
         <ul className="text-left text-sm max-h-60 overflow-y-auto space-y-2 border-t border-gray-200 pt-4">
           {archivosPorCarpeta[activeFolder].map((file, index) => (
-            <li key={index} className="flex items-center gap-2">
-              📄 <span className="break-words">{file.name}</span>
+            <li key={index} className="flex items-center justify-between gap-2 p-2 hover:bg-gray-50 rounded">
+              <div className="flex items-center gap-2 flex-1 min-w-0">
+                <DocumentIcon className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                <span 
+                  className="break-words cursor-pointer hover:text-blue-600 flex-1"
+                  onClick={() => handleAbrirArchivo(file)}
+                  title="Click para abrir el archivo"
+                >
+                  {file.name}
+                </span>
+              </div>
+              {/* Botón eliminar siempre visible */}
+              <button
+                onClick={() => handleEliminarArchivo(activeFolder, index)}
+                className="text-red-500 hover:text-red-700 hover:bg-red-50 p-1 rounded transition-colors flex-shrink-0"
+                title="Eliminar archivo"
+              >
+                <XMarkIcon className="w-5 h-5" />
+              </button>
             </li>
           ))}
         </ul>
