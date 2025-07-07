@@ -1,5 +1,6 @@
 import { GroupInformation } from "./types";
 import { StudentInformation } from "./types";
+import { Shift } from "./types";
 
 export const students: StudentInformation[] = [
     {
@@ -51,6 +52,7 @@ export const groups: GroupInformation[] = [
         imageUrl: "https://unibetas.com/wp-content/uploads/2022/01/que-estudia-la-quimica-como-ciencia-experimental.png",
         profileImageUrl: "https://static.vecteezy.com/system/resources/previews/010/967/316/non_2x/avatar-bearded-man-free-vector.jpg",
         students: students,
+        shift: Shift.Morning,
     },
     {
         groupName: "Clase-B",
@@ -58,7 +60,8 @@ export const groups: GroupInformation[] = [
         description: "Este grupo es de 4to grado",
         imageUrl: "https://elucabista.com/wp-content/uploads/2017/01/historia.jpg",
         profileImageUrl: "https://img.freepik.com/vector-premium/mujer-avatar-mujer-negocios_38295-63.jpg", 
-        students: students1
+        students: students1,
+        shift: Shift.Evening,
     }, 
     {
         groupName: "Clase-C",
@@ -67,5 +70,6 @@ export const groups: GroupInformation[] = [
         imageUrl: "https://humanidades.com/wp-content/uploads/2017/07/geografia-1-e1571191539294-800x416.jpg",
         profileImageUrl: "https://img.freepik.com/vector-premium/mujer-avatar-mujer-negocios_38295-63.jpg", 
         students: students,
+        shift: Shift.Morning,
     }, 
 ];

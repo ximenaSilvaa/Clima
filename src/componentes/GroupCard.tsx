@@ -48,6 +48,14 @@ function GroupCard({ group }: GroupCardProps) {
           <div>
             <div className="text-lg font-semibold">{currentGroup.groupName}</div>
             <div className="text-sm text-gray-600">{currentGroup.teacher}</div>
+
+            {/* Banner del shift */}
+            <div className="relative inline-block px-3 py-1 border-1 rounded-3xl border-gray-400 mt-2">
+
+              {/* Texto del turno */}
+              <div className="text-sm text-gray-400">{currentGroup.shift}</div>
+            </div>
+
             <p className="mt-2 text-sm">{currentGroup.description}</p>
           </div>
 

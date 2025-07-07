@@ -5,6 +5,11 @@ export type StudentInformation = {
     profilePhoto: string;
 };
 
+export enum Shift {
+    Morning = "Morning",
+    Evening = "Evening",
+}
+
 export type GroupInformation = {
     groupName: string;
     teacher: string;
@@ -12,4 +17,5 @@ export type GroupInformation = {
     profileImageUrl: string;
     imageUrl: string;
     students: StudentInformation[];
+    shift: Shift;
 };
