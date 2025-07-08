@@ -46,6 +46,7 @@ export const students1: StudentInformation[] = [
 
 export const groups: GroupInformation[] = [
     {
+        id: "1",
         groupName: "Clase-A",
         teacher: "Antonio Castro",
         description: "Este grupo es de 4to grado",
@@ -55,6 +56,7 @@ export const groups: GroupInformation[] = [
         shift: Shift.Morning,
     },
     {
+        id: "2",
         groupName: "Clase-B",
         teacher: "Laura Castro",
         description: "Este grupo es de 4to grado",
@@ -64,6 +66,7 @@ export const groups: GroupInformation[] = [
         shift: Shift.Evening,
     }, 
     {
+        id: "3",
         groupName: "Clase-C",
         teacher: "Sonia Castro",
         description: "Este grupo es de 4to grado",

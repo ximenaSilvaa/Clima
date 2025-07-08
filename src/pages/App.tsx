@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import './index.css'
 import Grupos from './grupos'
-import Grupo from './grupo'
+import GrupoWrapper from '../componentes/GrupoWrapper'
 import Bienvenida from './bienvenida'
 import BuscarAlumno from './BuscarAlumno'
 import Alumno from './alumno'
@@ -13,7 +13,7 @@ function App() {
       <Route path="/" element={<Bienvenida />} />
       <Route path="/buscar" element={<BuscarAlumno />} />
       <Route path="grupos" element={<Grupos />} />
-      <Route path="grupo" element={<Grupo />} />
+      <Route path="/grupo/:id" element={<GrupoWrapper />} />
       <Route path="login" element={<Login />} />
       <Route path="/alumno" element={<Alumno />} />
     </Routes>

@@ -1,6 +1,6 @@
 import StudentCard from '../componentes/Student';
-import { useLocation } from 'react-router-dom'
 import { StudentInformation } from '../types/types';
+import { GroupInformation } from '../types/types';
 import Navbar from '../componentes/Navbar';
 import AddStudentCard from '../componentes/addStudentCard';
 import { useState } from 'react';
@@ -8,9 +8,11 @@ import ModalAddStudent from '../componentes/modalAddStudent';
 import GroupFilter from '../componentes/groupFilter';
 import { Shift } from '../types/types';
 
-function Grupo() {
-    const location = useLocation();
-    const { students } = location.state || {};
+interface GrupoProps {
+  group: GroupInformation;
+}
+
+function Grupo({ group }: GrupoProps) {
     const [modalAbierto, setModalAbierto] = useState(false)
     const [currentShift, setCurrentShift] = useState<Shift | "">("");
     const [nameIncluded, setNameIncluded] = useState("");
@@ -28,11 +30,11 @@ function Grupo() {
             {/* contenido centrado */}
             <div className="flex flex-row items-start justify-start min-h-screen w-full py-10 px-20">
                 
-                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-20 px-4">
+                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-20 px-4 min-w-2/3">
                     {
-                    students.map((student: StudentInformation) => (
-                        <StudentCard student={student}/>
-                    ))
+                        group.students.map((student: StudentInformation) => (
+                            <StudentCard student={student}/>
+                        ))
                     }
 
                     <AddStudentCard onClick={() => setModalAbierto(true)}/>

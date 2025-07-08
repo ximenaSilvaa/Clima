@@ -11,6 +11,7 @@ export enum Shift {
 }
 
 export type GroupInformation = {
+    id: string;
     groupName: string;
     teacher: string;
     description: string;
