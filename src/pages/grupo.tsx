@@ -37,6 +37,12 @@ function Grupo({ group }: GrupoProps) {
         });
     }
 
+    function clearFilters() {
+        setNameIncluded("");
+        setLastNameIncluded("");
+        setListIncluded(0);
+    }
+
     return (
         <div className="h-auto w-auto bg-primary flex flex-col">
             {/* header */}
@@ -67,7 +73,7 @@ function Grupo({ group }: GrupoProps) {
                         onNameChange={setNameIncluded}
                         onLastNameChange={setLastNameIncluded}
                         onListChange={setListIncluded}
-                        onClear={()=>{}}
+                        onClear={clearFilters}
                     />
                 </div>
             </div>
