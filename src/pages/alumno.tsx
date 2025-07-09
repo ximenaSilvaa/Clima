@@ -19,7 +19,7 @@ function Alumno() {
   const [estatusPago, setEstatusPago] = useState("Aceptado");
   const [grupo, setGrupo] = useState("5B");
 
-  const folders = ['Reportes', 'PEI', 'Expediente', 'Pagos'];
+  const folders = ['Reportes', 'PEI', 'Expediente', 'Pagos', 'Hola', 'Que hace'];
 
   const handleAgregarArchivo = (e: React.ChangeEvent<HTMLInputElement>) => {
     const archivos = e.target.files;
@@ -133,86 +133,86 @@ function Alumno() {
         <div className="border-t border-white mt-10 mb-6" />
 
         {/* Agregar */}
-         <div className="flex flex-col lg:flex-row items-stretch w-full gap-14 mt-10 min-h-[300px]">
-            <div className="flex flex-col items-center gap-6 w-full lg:w-[240px]">
+        <div className="flex flex-col lg:flex-row items-stretch w-full gap-14 mt-10 min-h-[300px]">
+            {/* <div className="flex flex-col items-center gap-6 w-full lg:w-[240px]"> */}
             {/* Espacio reservado para mantener el diseño */}
-          </div>
+            {/* </div> */}
             
-        {/* Carpetas */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 w-full justify-items-center">
-          {folders.map((label) => (
-            <button
-              key={label}
-              onClick={() => setActiveFolder(label)}
-              className="flex flex-col items-center focus:outline-none transition-transform hover:scale-110 hover:text-[#00b2ff]"
-            >
-              <div className="w-16 h-14 mb-5 text-white transition-transform">
-                <FolderIcon className="w-full h-full transition-transform hover:scale-110 hover:text-[#00b2ff]" />
-              </div>
-              <span className="text-sm sm:text-base">{label}</span>
-            </button>
-          ))}
-        </div>
+         {/* Carpetas */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 w-full justify-items-center">
+            {folders.map((label) => (
+              <button
+                key={label}
+                onClick={() => setActiveFolder(label)}
+                className="flex flex-col items-center focus:outline-none transition-transform hover:scale-110 hover:text-[#00b2ff]"
+              >
+                <div className="w-16 h-14 mb-5 text-white transition-transform">
+                  <FolderIcon className="w-full h-full transition-transform hover:text-[#00b2ff]" />
+                </div>
+                <span className="text-sm sm:text-base">{label}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Modal */}
       {activeFolder && (
-  <div className="absolute inset-0 bg-[#135078]/60 flex items-center justify-center z-50 overflow-y-auto py-12">
-    <div className="bg-white text-black p-8 rounded-2xl shadow-2xl w-[40rem] text-center max-h-[90vh] overflow-y-auto">
-      <h2 className="text-2xl font-bold mb-6">{activeFolder}</h2>
+        <div className="absolute inset-0 bg-[#135078]/60 flex items-center justify-center z-50 overflow-y-auto py-12">
+          <div className="bg-white text-black p-8 rounded-2xl shadow-2xl w-[40rem] text-center max-h-[90vh] overflow-y-auto">
+            <h2 className="text-2xl font-bold mb-6">{activeFolder}</h2>
 
-      {/* Botón para seleccionar documentos siempre visible */}
-      <label className="inline-block mb-6">
-        <span className="bg-[#00b2ff] text-white px-4 py-2 rounded shadow transition-transform hover:bg-[#008ecc] hover:scale-105 cursor-pointer inline-block">
-          Seleccionar documento
-          <input
-            type="file"
-            accept="application/pdf"
-            onChange={handleAgregarArchivo}
-            className="hidden"
-          />
-        </span>
-      </label>
+            {/* Botón para seleccionar documentos siempre visible */}
+            <label className="inline-block mb-6">
+              <span className="bg-[#00b2ff] text-white px-4 py-2 rounded shadow transition-transform hover:bg-[#008ecc] hover:scale-105 cursor-pointer inline-block">
+                Seleccionar documento
+                <input
+                  type="file"
+                  accept="application/pdf"
+                  onChange={handleAgregarArchivo}
+                  className="hidden"
+                />
+              </span>
+            </label>
 
-      {archivosPorCarpeta[activeFolder]?.length > 0 ? (
-        <ul className="text-left text-sm max-h-60 overflow-y-auto space-y-2 border-t border-gray-200 pt-4">
-          {archivosPorCarpeta[activeFolder].map((file, index) => (
-            <li key={index} className="flex items-center justify-between gap-2 p-2 hover:bg-gray-50 rounded">
-              <div className="flex items-center gap-2 flex-1 min-w-0">
-                <DocumentIcon className="w-5 h-5 text-blue-500 flex-shrink-0" />
-                <span 
-                  className="break-words cursor-pointer hover:text-blue-600 flex-1"
-                  onClick={() => handleAbrirArchivo(file)}
-                  title="Click para abrir el archivo"
-                >
-                  {file.name}
-                </span>
-              </div>
-              {/* Botón eliminar siempre visible */}
-              <button
-                onClick={() => handleEliminarArchivo(activeFolder, index)}
-                className="text-red-500 hover:text-red-700 hover:bg-red-50 p-1 rounded transition-colors flex-shrink-0"
-                title="Eliminar archivo"
-              >
-                <XMarkIcon className="w-5 h-5" />
-              </button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="text-sm italic text-gray-600 mt-4">No hay archivos en esta carpeta.</p>
-      )}
+            {archivosPorCarpeta[activeFolder]?.length > 0 ? (
+              <ul className="text-left text-sm max-h-60 overflow-y-auto space-y-2 border-t border-gray-200 pt-4">
+                {archivosPorCarpeta[activeFolder].map((file, index) => (
+                  <li key={index} className="flex items-center justify-between gap-2 p-2 hover:bg-gray-50 rounded">
+                    <div className="flex items-center gap-2 flex-1 min-w-0">
+                      <DocumentIcon className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                      <span 
+                        className="break-words cursor-pointer hover:text-blue-600 flex-1"
+                        onClick={() => handleAbrirArchivo(file)}
+                        title="Click para abrir el archivo"
+                      >
+                        {file.name}
+                      </span>
+                    </div>
+                    {/* Botón eliminar siempre visible */}
+                    <button
+                      onClick={() => handleEliminarArchivo(activeFolder, index)}
+                      className="text-red-500 hover:text-red-700 hover:bg-red-50 p-1 rounded transition-colors flex-shrink-0"
+                      title="Eliminar archivo"
+                    >
+                      <XMarkIcon className="w-5 h-5" />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-sm italic text-gray-600 mt-4">No hay archivos en esta carpeta.</p>
+            )}
 
-      <button
-        onClick={() => setActiveFolder(null)}
-        className="mt-8 bg-[#135078] text-white px-6 py-2 rounded hover:bg-[#0e3f5f] hover:scale-105 transition-transform"
-      >
-        Cerrar
-      </button>
-    </div>
-  </div>
-)}
+            <button
+              onClick={() => setActiveFolder(null)}
+              className="mt-8 bg-[#135078] text-white px-6 py-2 rounded hover:bg-[#0e3f5f] hover:scale-105 transition-transform"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+    )}
 
     </div>
   );
