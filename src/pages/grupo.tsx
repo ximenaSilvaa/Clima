@@ -6,6 +6,7 @@ import AddStudentCard from '../componentes/addStudentCard';
 import { useState } from 'react';
 import ModalAddStudent from '../componentes/modalAddStudent';
 import StudentFilter from '../componentes/studentFilter';
+import Hide from '../componentes/hide'
 
 interface GrupoProps {
   group: GroupInformation;

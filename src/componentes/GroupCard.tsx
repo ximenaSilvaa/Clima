@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GroupInformation } from '../types/types';
 import EditGroup from './EditGroup';
+import Hide from '../componentes/hide'
 
 interface GroupCardProps {
   group: GroupInformation;
@@ -67,12 +68,15 @@ function GroupCard({ group }: GroupCardProps) {
             >
               Visualizar
             </button>
+
+            <Hide>
             <button
               className="bg-white text-cyan-600 border border-cyan-400 px-4 py-2 rounded hover:bg-gray-100 transition"
               onClick={() => setIsEditing(true)}
             >
               Editar
             </button>
+            </Hide>
           </div>
         </div>
       </div>

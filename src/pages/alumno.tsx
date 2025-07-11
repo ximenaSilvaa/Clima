@@ -7,6 +7,7 @@ import {
   XMarkIcon,
   DocumentIcon,
 } from '@heroicons/react/24/solid';
+import Hide from '../componentes/hide';
 
 function Alumno() {
   const [activeFolder, setActiveFolder] = useState<string | null>(null);
@@ -65,13 +66,14 @@ function Alumno() {
           {/* Izquierda: Avatar y botón editar */}
           <div className="flex flex-col items-center gap-6 w-full lg:w-[240px]">
             <UserCircleIcon className="w-80 h-50 text-white" />
+            <Hide>
             <button
               onClick={() => setEditMode(!editMode)}
               className="flex flex-col items-center text-xs mt-2 focus:outline-none transition-transform hover:scale-110 hover:text-[#00b2ff]"
             >
               <PencilSquareIcon className="w-8 h-8 mb-1 transition-transform" />
               <span>{editMode ? "Guardar" : "Editar"}</span>
-            </button>
+            </button> </Hide>
           </div>
 
           {/* Línea vertical */}

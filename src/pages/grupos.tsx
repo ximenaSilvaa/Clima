@@ -7,6 +7,7 @@ import Navbar from '../componentes/Navbar'
 import AddGroupCard from '../componentes/addGroupCard'
 import ModalAddGrupo from '../componentes/modalAddGroup'
 import GroupFilter from '../componentes/groupFilter'
+import Hide from '../componentes/hide'
 
 function Grupos() {
   const [modalAbierto, setModalAbierto] = useState(false);

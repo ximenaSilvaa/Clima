@@ -3,6 +3,13 @@ import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const navigate = useNavigate();
+    
+    const handleLogin = () => {
+        const admin = false; // recuperar esto del backend
+        localStorage.setItem('admin', JSON.stringify(admin));
+        navigate('/grupos');
+    };
+
 
     return (
         <div className="h-screen flex flex-col bg-[var(--gris)]">
@@ -33,7 +40,7 @@ function Login() {
                     </div>
                     <button
                         className="bg-white text-[var(--azul)] font-bold text-lg px-8 py-2 rounded-full border border-gray-300 hover:bg-[#cde0f4]"
-                        onClick={() => navigate('/grupos')}
+                        onClick={handleLogin}
                     >
                         Ingresar
                     </button>
