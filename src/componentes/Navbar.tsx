@@ -7,6 +7,12 @@ const Navbar = () => {
     <nav className="w-full h-20 bg-gray-200 flex items-center justify-center space-x-8">
       <span
         className="relative px-6 py-2 text-[var(--azul)] font-semibold cursor-pointer transition-all duration-300 hover:text-white hover:bg-[var(--azul)] hover:rounded-full"
+        onClick={() => navigate("/dashboard")}
+      >
+        Dashboard
+      </span>
+      <span
+        className="relative px-6 py-2 text-[var(--azul)] font-semibold cursor-pointer transition-all duration-300 hover:text-white hover:bg-[var(--azul)] hover:rounded-full"
         onClick={() => navigate("/grupos")}
       >
         Grupos

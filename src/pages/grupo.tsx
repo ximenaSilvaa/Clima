@@ -6,10 +6,32 @@ import AddStudentCard from '../componentes/addStudentCard';
 import { useState } from 'react';
 import ModalAddStudent from '../componentes/modalAddStudent';
 
+interface StudentData {
+  nombre: string;
+  matricula: string;
+  edad: string;
+  estatus: string;
+  fechaNacimiento: string;
+  foto: string | null;
+}
+
 function Grupo() {
     const location = useLocation();
-    const { students } = location.state || {};
-    const [modalAbierto, setModalAbierto] = useState(false)
+    const { students: initialStudents } = location.state || {};
+    const [students, setStudents] = useState<StudentInformation[]>(initialStudents || []);
+    const [modalAbierto, setModalAbierto] = useState(false);
+
+    const handleAddStudent = (studentData: StudentData) => {
+        // Convert StudentData to StudentInformation format
+        const newStudent: StudentInformation = {
+            studentName: studentData.nombre,
+            studentLastName: '', // We don't have lastName in the form, so keeping empty
+            lista: students.length + 1, // Assign next number
+            profilePhoto: studentData.foto || '/default-avatar.png' // Use uploaded photo or default
+        };
+        
+        setStudents([...students, newStudent]);
+    };
 
     return (
         <div className="h-auto w-auto bg-primary flex flex-col">
@@ -36,7 +58,10 @@ function Grupo() {
             </div>
 
             {modalAbierto && (
-                <ModalAddStudent onClose={() => setModalAbierto(false)} />
+                <ModalAddStudent 
+                    onClose={() => setModalAbierto(false)} 
+                    onAddStudent={handleAddStudent}
+                />
             )}
 
 
